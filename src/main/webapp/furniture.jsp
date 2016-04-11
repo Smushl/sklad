@@ -1,9 +1,8 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" %>
-<%@page import="java.sql.*"%>
-<%@ page import="model.Model" %>
-<%@ page import="model.FurnitureGroupDataSet" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="model.FurnitureDataSet" %>
+<%@ page import="model.FurnitureGroupDataSet" %>
+<%@ page import="model.Model" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
@@ -94,7 +93,8 @@
     <%--</tbody>--%>
 </table>
 <%--<input type="hidden" name="group" value="<%=group%>">--%>
-<input type="submit">
+<%--<input type="submit">--%>
+<button class="btn" type="submit">Добавить</button>
 </form>
 <br>
 <br>

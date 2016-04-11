@@ -4,10 +4,11 @@ import model.FurnitureDataSet;
 import model.FurnitureGroupDataSet;
 import model.Manager;
 import model.Order;
-
 import org.apache.log4j.Logger;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -186,6 +187,19 @@ public class DbService {
         } catch (SQLException e) {
             logger.error("Renaming furniture failed: ", e);
         }
+        return updated;
+    }
+
+    public int addNewManager(String name){
+        String insertTableSQL = String.format("INSERT INTO sklad.managers (name) VALUES ('%s');", name);
+        logger.info(insertTableSQL);
+        int updated = -1; //значение fail
+        try {
+            updated =  Executor.execUpdate(this.con, insertTableSQL);
+        } catch (SQLException e) {
+            logger.error("Adding new manager failed: ", e);
+        }
+
         return updated;
     }
 

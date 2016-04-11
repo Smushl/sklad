@@ -5,14 +5,17 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * TomcatServ
  * Created by roman on 18.03.16.
  */
+@WebServlet(name = "NewFurniture", urlPatterns = "/furniture")
 public class NewFurniture extends HttpServlet {
     final static Logger logger = Logger.getLogger(NewFurniture.class);
     @Override

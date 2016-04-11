@@ -3,6 +3,7 @@ package control;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Created by Некрасов on 22.03.2016.
  */
+@WebServlet(name = "OrderAdd", urlPatterns = "/addorder")
 public class OrderAdd extends HttpServlet {
     final static Logger logger = Logger.getLogger(OrderAdd.class);
     @Override

@@ -54,8 +54,19 @@ public class Model {
     }
 
     public int addNewManager(String name){
-        logger.info("Trying to add new manager " + name);
-        return 1;
+        //проверка существования имени в самой модельке
+        for (Manager manager : managers){
+            if (manager.getName().equals(name)) {
+                logger.error("Manager already exists");
+                return -1;
+            }
+        }
+        int result = dbService.addNewManager(name);
+        if (result > 0){
+            managers = dbService.getManagers();
+            logger.info("New manager added: " + name);
+        }
+        return result;
     }
 
     public int removeFurniture(int id){

@@ -1,6 +1,5 @@
 package control;
 
-import model.Model;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -12,8 +11,10 @@ import java.io.IOException;
 import java.util.Enumeration;
 
 /**
+ *
  * Created by roman on 06.04.16.
  */
+
 @WebServlet(name = "WriteOff", urlPatterns = "/write-off")
 public class WriteOff extends HttpServlet {
     final static Logger logger = Logger.getLogger(WriteOff.class);

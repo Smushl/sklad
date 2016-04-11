@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Ошибка</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <p><%=(String)request.getAttribute("errorMsg") %></p>
