@@ -4,6 +4,7 @@ import model.FurnitureDataSet;
 import model.Model;
 import org.apache.log4j.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +35,7 @@ public class WriteOff extends HttpServlet {
         int orderId = Integer.parseInt(request.getParameter("order"));
 
         HttpSession session = request.getSession();
+        @SuppressWarnings("unchecked")
         List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session.getAttribute("basket");
 
         for (FurnitureDataSet furnitureItem : furniture){
@@ -44,6 +46,10 @@ public class WriteOff extends HttpServlet {
             else
                 logger.error("Ошибка списания: " + furnitureItem.getName());
         }
+        session.removeAttribute("basket"); //в случае успеха очищаем корзинку
+
+        RequestDispatcher view = request.getRequestDispatcher("writeoffs.jsp");
+        view.forward(request, response);
 
         //сделать проще, взять из сессии список фурнитуры, по id получить кол-во в списание
         //записать в Мару?

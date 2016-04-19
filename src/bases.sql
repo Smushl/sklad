@@ -27,15 +27,15 @@ INSERT INTO sklad.orders values (null, 'Лобаново, Зеленая, 3/1Б-
 INSERT INTO sklad.orders values (null, 'Носков Павел', '2016-03-16', '2016-03-16', 80, 'Распил');
 INSERT INTO sklad.orders values (null, 'Аптека Виталенд', '2016-03-16', '2016-04-01', 2280, 'Шкафы. Желтый, Ирис');
 
-2016-03-29:
-'CREATE TABLE `sellers` (
+#2016-03-29:
+CREATE TABLE `sellers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `sellers_name_uindex` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-'CREATE TABLE `receipt` (
+CREATE TABLE `receipt` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
@@ -43,7 +43,7 @@ INSERT INTO sklad.orders values (null, 'Аптека Виталенд', '2016-03
   PRIMARY KEY (`id`),
   KEY `fk_seller_id` (`seller_id`),
   CONSTRAINT `fk_seller_id` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO sklad.sellers VALUES (null, 'Фиерра'), (null, 'Рондо'), (null, 'Партнер'), (null, 'Нэко'), (null, 'ПермЭкспоСервис');
 SELEct * FROM sklad.sellers ORDER BY name;
@@ -68,3 +68,7 @@ CREATE TABLE `sklad`.`minus` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+SELECT furniture.name as 'Фурнитура', minus.amount as 'Количество', orders.name as 'Заказ', minus.date as 'Дата'
+FROM orders, furniture, minus
+WHERE minus.order_id = orders.id AND minus.furniture_id = furniture.id;
