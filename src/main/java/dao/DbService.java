@@ -203,7 +203,45 @@ public class DbService {
         return updated;
     }
 
+    public int writeOff(int furnitureId, int amount, int newInventory, int orderId){
+        //возможно тут всё корявенько, может потом переделаю
+        //нужно получить результат транзакции
+        try {
+            con.setAutoCommit(false);
+            String update1 = "UPDATE sklad.furniture SET inventory='" + newInventory + "' WHERE id=" + furnitureId + ";";
+            logger.info(update1);
+            int updated = -1; //значение fail
+            try {
+                updated =  Executor.execUpdate(this.con, update1);
+                logger.info(updated + " row(s) affected");
+            } catch (SQLException e) {
+                logger.error("Write-Off furniture failed: ", e);
+            }
+            java.util.Date dateNow = new java.util.Date();
+            Date date = new Date(dateNow.getTime());
+            String update2 = String.format("INSERT INTO sklad.minus VALUES (%d, %d, %d, '%s');", orderId, furnitureId, amount, date.toString());
+            logger.info(update2);
+            updated = -1; //значение fail
+            try {
+                updated =  Executor.execUpdate(this.con, update2);
+                logger.info(updated + " row(s) affected");
+            } catch (SQLException e) {
+                logger.error("Write-Off furniture failed: ", e);
+            }
+            con.commit();
+            con.setAutoCommit(true);
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                con.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        return 1;
+    }
 }
 
 

@@ -47,3 +47,24 @@ INSERT INTO sklad.orders values (null, 'Аптека Виталенд', '2016-03
 
 INSERT INTO sklad.sellers VALUES (null, 'Фиерра'), (null, 'Рондо'), (null, 'Партнер'), (null, 'Нэко'), (null, 'ПермЭкспоСервис');
 SELEct * FROM sklad.sellers ORDER BY name;
+
+# Новая таблица "Списания":
+CREATE TABLE `sklad`.`minus` (
+  `order_id` INT NOT NULL,
+  `furniture_id` INT NOT NULL,
+  `amount` INT NOT NULL,
+  `date` DATE NOT NULL,
+  INDEX `fk_order_id_idx` (`order_id` ASC),
+  INDEX `fk_furniture_id_idx` (`furniture_id` ASC),
+  CONSTRAINT `fk_order_id`
+    FOREIGN KEY (`order_id`)
+    REFERENCES `sklad`.`orders` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_furniture_id`
+    FOREIGN KEY (`furniture_id`)
+    REFERENCES `sklad`.`furniture` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;

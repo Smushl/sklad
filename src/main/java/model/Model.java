@@ -125,5 +125,12 @@ public class Model {
     public void addOrder(ArrayList<Order> orders) {
         this.orders = orders;
     }
+
+    public int writeOff(FurnitureDataSet furnitureItem, int amount, int orderId){
+        int result = dbService.writeOff(furnitureItem.getId(), amount, furnitureItem.getInventory()-amount, orderId);
+        if (result > 0)
+            furnitureList = dbService.getFurnitureList();
+        return result;
+    }
 }
 
