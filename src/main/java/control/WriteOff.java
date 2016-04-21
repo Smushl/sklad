@@ -25,13 +25,6 @@ public class WriteOff extends HttpServlet {
     final static Logger logger = Logger.getLogger(WriteOff.class);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Model model = (Model) getServletContext().getAttribute("model");
-/*
-        Enumeration<String> parameterNames = request.getParameterNames();
-        while (parameterNames.hasMoreElements()){
-            String param = parameterNames.nextElement();
-            logger.info(param + ": " + request.getParameter(param));
-        }
-*/
         int orderId = Integer.parseInt(request.getParameter("order"));
 
         HttpSession session = request.getSession();

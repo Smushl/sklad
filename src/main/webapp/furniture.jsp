@@ -51,7 +51,10 @@
 
         %>
     <form method="post" action="receipt.jsp">
-        <button class="btn" type="submit">Списать</button>
+        <button class="btn" type="submit">Списание</button>
+    </form>
+    <form method="post" action="receipt.jsp">
+        <button class="btn" type="submit">Приход</button>
     </form>
 </div>
 <article>

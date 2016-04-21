@@ -42,7 +42,7 @@ public class FurnitureChange extends HttpServlet {
             switch (result){
                 case -1: msg = "Что-то пошло не так. Обратитесь к программисту"; break;
                 case 0:  msg = "Вы ввели то же самое название"; break;
-                case 1:  msg = "Переименовано успешно!"; break; //а лучше сделать так, чтоб осталось на той же странице, чтоб пользователь сразу видел результат
+                case 1:  msg = "Переименовано успешно!"; break;
             }
             RequestDispatcher view = req.getRequestDispatcher("furniture_alone.jsp?f=" + id);
             req.setAttribute("result_msg", msg);
@@ -58,8 +58,9 @@ public class FurnitureChange extends HttpServlet {
                 case 0:  msg = "0 - хз, что это значит. Может фурнитура уже в этой группе?!"; break;
                 case 1:  msg = "Перемещение успешно!"; break; //а лучше сделать так, чтоб переместилось в прежнюю группу
             }
-            RequestDispatcher view = req.getRequestDispatcher("result.jsp");
-            req.setAttribute("result_msg", msg);
+//            RequestDispatcher view = req.getRequestDispatcher("result.jsp");
+            RequestDispatcher view = req.getRequestDispatcher("furniture.jsp?group=" + group_id);
+//            req.setAttribute("result_msg", msg);
             view.forward(req, resp);
         }
 
