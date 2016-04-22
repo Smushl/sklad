@@ -1,54 +1,53 @@
-<%@ page import="java.util.List" %>
 <%@ page import="model.FurnitureDataSet" %>
-<%@ page import="model.Order" %>
 <%@ page import="model.Model" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="model.Seller" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
-  User: roman
-  Date: 01.04.16
-  Time: 0:21
+  User: Некрасов
+  Date: 22.04.2016
+  Time: 15:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 <head>
-    <title>Списание фурнитуры</title>
+    <title>Приход</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
 <%@ include file="top.html"%>
+
 <article>
-<form method="post" action="write-off" autocomplete="off" >
-<table>
-    <caption><h2>Списание фурнитуры</h2></caption>
-    <tr>
-        <th><b>Название</b></th>
-        <th><b>На складе</b></th>
-        <th><b>Кол-во</b></th>
-    </tr>
-<%
-    HttpSession session1 = request.getSession();
-    List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session1.getAttribute("basket");
-    for (FurnitureDataSet fds : furniture){
-        out.print("<tr><td>" + fds.getName() + "</td><td>" +fds.getInventory() + "</td><td><input type = 'number' name ='" + fds.getId() + "'min = '0'></td></tr>");
-    }
+    <form method="post" action="write-off" autocomplete="off" >
+        <table>
+            <caption><h2>Списание фурнитуры</h2></caption>
+            <tr>
+                <th><b>Название</b></th>
+                <th><b>Кол-во</b></th>
+                <th><b>Цена</b></th>
+            </tr>
+            <%
+                HttpSession session1 = request.getSession();
+                List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session1.getAttribute("basket");
+                for (FurnitureDataSet fds : furniture){
+                    out.print("<tr><td>" + fds.getName() + "</td><td><input type = 'number' name ='" + fds.getId() + "'min = '0'></td><td><input type = 'text'></td></tr>");
+                }
+            %>
+        </table>
 
-%>
-</table>
-
-    <select name="order" style="width: 70%;">
-        <% Model model = (Model) application.getAttribute("model");
-            List <Order> orders = model.getOrders();
-            for (Order order : orders){
-                out.print("<option value='"+ order.getId() + "'>" + order.getName() + "</option>\n");
-            }
-        %>
-    </select>
-    <button class="btn" type="submit">Списать</button>
-</form>
+        <select name="seller" style="width: 70%;">
+            <% Model model = (Model) application.getAttribute("model");
+                List <Seller> sellers = model.getSellers();
+                for (Seller seller : sellers){
+                    out.print("<option value='"+ seller.getId() + "'>" + seller.getName() + "</option>\n");
+                }
+            %>
+        </select>
+        <button class="btn" type="submit">Списать</button>
+    </form>
 
 </article>
+
 </body>
 </html>

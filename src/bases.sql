@@ -72,3 +72,29 @@ DEFAULT CHARACTER SET = utf8;
 SELECT furniture.name as 'Фурнитура', minus.amount as 'Количество', orders.name as 'Заказ', minus.date as 'Дата'
 FROM orders, furniture, minus
 WHERE minus.order_id = orders.id AND minus.furniture_id = furniture.id;
+#создаем базу продавцов
+CREATE TABLE `sklad`.`sellers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
+#создаем базу поступлений
+CREATE TABLE sklad.receipt
+(
+  seller_id INT NOT NULL,
+  furniture_id INT NOT NULL,
+  amount INT NOT NULL,
+  price INT DEFAULT 0 NOT NULL,
+  date INT NOT NULL,
+  CONSTRAINT seller FOREIGN KEY (seller_id) REFERENCES sellers (id),
+  CONSTRAINT furniture FOREIGN KEY (furniture_id) REFERENCES furniture (id)
+);
+#заполняем
+INSERT INTO sklad.sellers (name) VALUES ('Рондо');
+INSERT INTO sklad.sellers (name) VALUES ('Партнер');
+INSERT INTO sklad.sellers (name) VALUES ('ПромСнаб');
+INSERT INTO sklad.sellers (name) VALUES ('Империя Плит');
+INSERT INTO sklad.sellers (name) VALUES ('ПЭС');
+INSERT INTO sklad.sellers (name) VALUES ('Anonimus');
+

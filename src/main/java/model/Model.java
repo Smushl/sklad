@@ -15,7 +15,10 @@ public class Model {
     private ArrayList<FurnitureGroupDataSet> furnitureGroupDataSets;
     private ArrayList<Order> orders;
     private List<Manager> managers;
+    private List<Seller> sellers;
+
     final static Logger logger = Logger.getLogger(Model.class);
+
 
     public Model(DbService dbService) {
         this.dbService = dbService;
@@ -23,6 +26,7 @@ public class Model {
         furnitureGroupDataSets = dbService.getFurnitureGroups();
         orders = dbService.getOrders(0);
         managers = dbService.getManagers();
+        sellers = dbService.getSellers();
         logger.info("Model initialized");
     }
 
@@ -132,5 +136,11 @@ public class Model {
             furnitureList = dbService.getFurnitureList();
         return result;
     }
+
+    public List<Seller> getSellers(){
+        return sellers;
+    }
+
+
 }
 

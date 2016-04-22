@@ -4,7 +4,6 @@ import model.FurnitureDataSet;
 import model.Model;
 import org.apache.log4j.Logger;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,9 +36,7 @@ public class BasketUpdater extends HttpServlet {
             if (!basket.contains(fds))
                 basket.add(fds);
         }
-//        logger.info(req.getParameter("group"));
         session.setAttribute("basket", basket);
-//        req.getRequestDispatcher("receipt.jsp").forward(req, resp);
         req.getRequestDispatcher("furniture.jsp").forward(req, resp);
 
     }

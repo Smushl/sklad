@@ -50,7 +50,7 @@
                 }
 
         %>
-    <form method="post" action="receipt.jsp">
+    <form method="post" action="writeoff.jsp">
         <button class="btn" type="submit">Списание</button>
     </form>
     <form method="post" action="receipt.jsp">

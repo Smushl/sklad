@@ -1,9 +1,6 @@
 package dao;
 
-import model.FurnitureDataSet;
-import model.FurnitureGroupDataSet;
-import model.Manager;
-import model.Order;
+import model.*;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -241,6 +238,26 @@ public class DbService {
         }
 
         return 1;
+    }
+
+    public List<Seller> getSellers(){
+        List<Seller> sellers = null;
+        String queryString = "SELECT * FROM sklad.sellers ORDER BY name;";
+        try{
+            sellers = Executor.execQuery(con, queryString, resultSet -> {
+                List<Seller> sellers_ = new ArrayList<>();
+                while (resultSet.next()) {
+                    sellers_.add(new Seller(resultSet.getInt("id"), resultSet.getString("name")));
+                }
+                return sellers_;
+            });
+            logger.info("Managers from DB received");
+        }
+        catch (SQLException e){
+            logger.error("SQL Exception ", e);
+        }
+
+        return sellers;
     }
 }
 
