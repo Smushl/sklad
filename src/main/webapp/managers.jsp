@@ -1,5 +1,5 @@
-<%@ page import="model.Model" %>
 <%@ page import="model.Manager" %>
+<%@ page import="model.Model" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -21,7 +21,11 @@
         <%
             Model model = (Model) application.getAttribute("model");
             for (Manager manager : model.getManagers()){
-                out.print("<tr><td>" + manager.getId() + "</td><td>" + manager.getName() + "</td><td>" + manager.isActive() + "</td></tr>\n");
+                out.print("<tr>" +
+                        "<td>" + manager.getId() + "</td>" +
+                        "<td>" + manager.getName() + "</td>" +
+                        "<td>" + manager.isActive() + "</td>" +
+                        "</tr>\n");
             }
         %>
     </table>
@@ -29,7 +33,7 @@
     <form method='POST' action='manager_add' autocomplete='off'>
         <fieldset>
             <legend>Новый менеджер</legend>
-            <input name='name' type='text' required>
+            <input name='name' type='text' title="Имя" required>
             <input type='submit' value='Добавить'>
         </fieldset>
     </form>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ *
  * Created by roman on 27.03.16.
  */
 @WebServlet(name = "FurnitureChange", urlPatterns = "/fur_change")
@@ -39,7 +40,7 @@ public class FurnitureChange extends HttpServlet {
                     logger.info("Успешно удалено: " + furnitureName);
                     break;
             }
-            RequestDispatcher view = req.getRequestDispatcher("result.jsp");
+            RequestDispatcher view = req.getRequestDispatcher("WEB-INF/result.jsp");
             req.setAttribute("result_msg", msg);
             view.forward(req, resp);
         }
@@ -62,7 +63,7 @@ public class FurnitureChange extends HttpServlet {
                     break;
             }
             RequestDispatcher view = req.getRequestDispatcher("furniture_alone.jsp?f=" + id);
-            req.setAttribute("result_msg", msg);
+//            req.setAttribute("result_msg", msg);
             view.forward(req, resp);
         }
         //-----------------MOVE----------------

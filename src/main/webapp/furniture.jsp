@@ -15,7 +15,7 @@
 <%@ include file="top.html"%> <%--шапка--%>
 
 <%int group = (request.getParameter("group") == null) ? 0 : Integer.parseInt(request.getParameter("group"));%>
-<%String name_part = (request.getParameter("name_part") == null) ? "" : (String)request.getParameter("name_part");%>
+<%String name_part = (request.getParameter("name_part") == null) ? "" : request.getParameter("name_part");%>
 
 <aside>
     <%

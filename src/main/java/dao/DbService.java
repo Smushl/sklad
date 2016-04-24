@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *
+ *
  * Created by roman on 19.03.16.
  */
 public class DbService {
@@ -147,7 +149,7 @@ public class DbService {
     }
 
     public int removeFurniture(int id){
-        String query = String.format("DELETE FROM sklad.furniture WHERE id='" + id + "';");
+        String query = String.format("DELETE FROM sklad.furniture WHERE id=%d;", id);
         logger.info(query);
         int updated = -1; //значение fail
         try {
@@ -162,7 +164,7 @@ public class DbService {
     }
 
     public int renameFurniture(int id, String newName){
-        String query = String.format("UPDATE sklad.furniture SET name='" + newName + "' WHERE id=" + id + ";");
+        String query = String.format("UPDATE sklad.furniture SET name='%s' WHERE id=%d;", newName, id);
         logger.info(query);
         int updated = -1; //значение fail
         try {
@@ -175,7 +177,7 @@ public class DbService {
     }
 
     public int moveFurnitureToGroup(int id, int groupId){
-        String query = String.format("UPDATE sklad.furniture SET group_id='" + groupId + "' WHERE id=" + id + ";");
+        String query = String.format("UPDATE sklad.furniture SET group_id=%d WHERE id=%d;", groupId, id);
         logger.info(query);
         int updated = -1; //значение fail
         try {
@@ -203,11 +205,12 @@ public class DbService {
     public int writeOff(int furnitureId, int amount, int newInventory, int orderId){
         //возможно тут всё корявенько, может потом переделаю
         //нужно получить результат транзакции
+        int updated = -1; //значение fail
         try {
             con.setAutoCommit(false);
             String update1 = "UPDATE sklad.furniture SET inventory='" + newInventory + "' WHERE id=" + furnitureId + ";";
             logger.info(update1);
-            int updated = -1; //значение fail
+
             try {
                 updated =  Executor.execUpdate(this.con, update1);
                 logger.info(updated + " row(s) affected");
@@ -237,7 +240,7 @@ public class DbService {
             }
         }
 
-        return 1;
+        return updated;
     }
 
     public List<Seller> getSellers(){
@@ -251,7 +254,7 @@ public class DbService {
                 }
                 return sellers_;
             });
-            logger.info("Managers from DB received");
+            logger.info("Sellers from DB received");
         }
         catch (SQLException e){
             logger.error("SQL Exception ", e);

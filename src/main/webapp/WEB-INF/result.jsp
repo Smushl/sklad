@@ -9,13 +9,14 @@
   Страничка для отображения результата дейсвий по внесению изменений в фурнитуру
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Результат</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%>
+<%@ include file="/top.html"%> <%--странно, все ссылки работают без "\", а этой надо!--%>
 <aside>
     <%
         Model model = (Model) application.getAttribute("model");
