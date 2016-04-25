@@ -8,12 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Ошибка</title>
+    <title>Ошибка 404</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<%@ include file="top.html"%> <%--шапка--%>
 <article>
-<p><%=(String)request.getAttribute("errorMsg") %></p>
+<p>Запрашиваемая вами страница не найдена</p>
 </article>
 </body>
 </html>
