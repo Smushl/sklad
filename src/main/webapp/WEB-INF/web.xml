@@ -7,6 +7,10 @@
             furniture.jsp
         </welcome-file>
     </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error404.jsp</location>
+    </error-page>
     <resource-ref>
         <description>MySQL Datasource example</description>
         <res-ref-name>jdbc/sklad</res-ref-name>

@@ -34,7 +34,7 @@ public class ManagerAdd extends HttpServlet {
         }
         else{
             req.setAttribute("errorMsg", "Ошибка добавления нового мэнеджера");
-            RequestDispatcher view = req.getRequestDispatcher("error.jsp");
+            RequestDispatcher view = req.getRequestDispatcher("error404.jsp");
             view.forward(req, resp);
         }
 
