@@ -9,10 +9,10 @@
 <html>
 <body>
 <nav>
-    <a href="/tomcatserv/dictionary.jsp">Словарик</a>
-    <a href="/tomcatserv/managers.jsp">Менеджеры</a>
-    <a href="/tomcatserv/orders.jsp">Заказы</a>
-    <a href="/tomcatserv/furniture.jsp">Склад</a>
+    <a href="dictionary.jsp">Словарик</a>
+    <a href="managers.jsp">Менеджеры</a>
+    <a href="orders.jsp">Заказы</a>
+    <a href="furniture.jsp">Склад</a>
 </nav>
 
 </body>
