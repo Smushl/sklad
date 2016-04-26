@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--META http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
     <title>Furniture.JSP</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -22,35 +21,31 @@
     Model model = (Model) application.getAttribute("model");
     ArrayList<FurnitureGroupDataSet> furnitureGroupDataSets = model.getFurnitureGroups();
 
-    for (FurnitureGroupDataSet furnitureGroupDataSet : furnitureGroupDataSets){
-        out.print("<a href='furniture.jsp?group=" + furnitureGroupDataSet.getId() + "'>");
-        if (furnitureGroupDataSet.getId() == group)
+    for (FurnitureGroupDataSet furnitureGroupDataSet : furnitureGroupDataSets){ %>
+        <a href='furniture.jsp?group=<%= furnitureGroupDataSet.getId() %>'>
+        <% if (furnitureGroupDataSet.getId() == group)
             out.print("<b>" + furnitureGroupDataSet.getName() + "</b>");
         else
-            out.print(furnitureGroupDataSet.getName());
-        out.print("</a><br>\n");
-    }
-    %>
+            out.print(furnitureGroupDataSet.getName()); %>
+        </a><br>
+    <% } %>
+
     <a href='furniture.jsp'>Вся фурнитура</a><br><br>
-    <!--div style="text-align: center;"-->
         <form method="get" action="furniture.jsp" autocomplete="off" >
             <input type="text" name="name_part" placeholder="Введите часть названия фурнитуры" required style="width: 150px;">
             <input type='submit' value='Найти!'>
         </form>
-    <!--/div-->
 </aside>
 <div class = 'basket'>
     <b>Корзина</b><br>
         <%
-            HttpSession session1 = request.getSession();
             @SuppressWarnings("unchecked")
-            List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session1.getAttribute("basket");
+            List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session.getAttribute("basket");
             if (furniture != null)
-                for (FurnitureDataSet fds : furniture){
-                    out.print(fds.getName() + "<br>");
-                }
+                for (FurnitureDataSet fds : furniture){ %>
+                    <%= fds.getName() %><br>
+                <% } %>
 
-        %>
     <form method="post" action="writeoff.jsp">
         <button class="btn" type="submit">Списание</button>
     </form>
@@ -67,8 +62,6 @@
     <th><b>Кол-во на складе</b></th>
     <th></th>
     </tr>
-    <%--<tbody>--%>
-
     <%
         ArrayList<FurnitureDataSet> furnitureList = model.getFurnitureList();
 
@@ -92,12 +85,7 @@
             }
         }
     %>
-
-
-    <%--</tbody>--%>
 </table>
-<%--<input type="hidden" name="group" value="<%=group%>">--%>
-<%--<input type="submit">--%>
 <button class="btn" type="submit">Добавить</button>
 </form>
 <br>

@@ -29,22 +29,23 @@
         <th><b>Кол-во</b></th>
     </tr>
 <%
-    HttpSession session1 = request.getSession();
-    List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session1.getAttribute("basket");
-    for (FurnitureDataSet fds : furniture){
-        out.print("<tr><td>" + fds.getName() + "</td><td>" +fds.getInventory() + "</td><td><input type = 'number' name ='" + fds.getId() + "'min = '0'></td></tr>");
-    }
-
-%>
+    @SuppressWarnings("unchecked")
+    List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session.getAttribute("basket");
+    for (FurnitureDataSet fds : furniture){ %>
+    <tr>
+        <td><%= fds.getName() %></td>
+        <td><%= fds.getInventory() %></td>
+        <td><input type = 'number' name ='<%= fds.getId() %>' min = '0'></td>
+    </tr>
+    <% } %>
 </table>
 
-    <select name="order" style="width: 70%;">
+    <select name="order" title="заказ" style="width: 70%;">
         <% Model model = (Model) application.getAttribute("model");
             List <Order> orders = model.getOrders();
-            for (Order order : orders){
-                out.print("<option value='"+ order.getId() + "'>" + order.getName() + "</option>\n");
-            }
-        %>
+            for (Order order : orders){ %>
+            <option value='<%= order.getId() %>'><%= order.getName() %></option>
+            <% } %>
     </select>
     <button class="btn" type="submit">Списать</button>
 </form>
