@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%>
+<%@ include file="top.jsp"%>
 <article>
 
     Мммм... а как мы сюда списания зафигачим? Прямо в БД лезть низя. В дбСервис наверное тоже

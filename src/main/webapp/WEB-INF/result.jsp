@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="/top.html"%> <%--странно, все ссылки работают без "\", а этой надо!--%>
+<%@ include file="/top.jsp"%> <%--странно, все ссылки работают без "\", а этой надо!--%>
 <aside>
     <%
         Model model = (Model) application.getAttribute("model");

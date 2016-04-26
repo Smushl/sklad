@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%>
+<%@ include file="top.jsp"%>
 <article>
     <table>
         <caption><h3>Менеджеры</h3></caption>

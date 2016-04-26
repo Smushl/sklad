@@ -1,14 +1,13 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" %>
 <%@page import="java.sql.*"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <!--META http-equiv="Content-Type" content="text/html; charset=UTF-8"/-->
     <title>MyDictionary</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%>
+<%@ include file="top.jsp"%>
     <article>
         <%
         Class.forName("com.mysql.jdbc.Driver");

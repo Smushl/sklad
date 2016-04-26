@@ -1,6 +1,6 @@
 <%@ page import="model.FurnitureDataSet" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: roman
   Date: 06.04.16
@@ -22,6 +22,7 @@
         </tr>
         <%
             HttpSession session1 = request.getSession();
+            @SuppressWarnings("unchecked")
             List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session1.getAttribute("basket");
             if (furniture != null)
                 for (FurnitureDataSet fds : furniture){
