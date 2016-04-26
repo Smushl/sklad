@@ -20,14 +20,13 @@
         </tr>
         <%
             Model model = (Model) application.getAttribute("model");
-            for (Manager manager : model.getManagers()){
-                out.print("<tr>" +
-                        "<td>" + manager.getId() + "</td>" +
-                        "<td>" + manager.getName() + "</td>" +
-                        "<td>" + manager.isActive() + "</td>" +
-                        "</tr>\n");
-            }
-        %>
+            for (Manager manager : model.getManagers()){ %>
+                <tr>
+                    <td><%= manager.getId() %></td>
+                    <td><%= manager.getName() %></td>
+                    <td><%= manager.isActive() %></td>
+                </tr>
+            <% } %>
     </table>
     <br>
     <form method='POST' action='manager_add' autocomplete='off'>
