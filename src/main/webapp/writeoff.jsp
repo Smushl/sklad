@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<%@ include file="top.html"%>
+<%@ include file="top.jsp"%>
 <article>
 <form method="post" action="write-off" autocomplete="off" >
 <table>

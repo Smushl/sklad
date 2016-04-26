@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" %>
+<%@page language="java" contentType="text/html;charset=UTF-8" %>
 <%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%>
+<%@ include file="top.jsp"%>
     <article>
             <%
             Class.forName("com.mysql.jdbc.Driver");

@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%>
+<%@ include file="top.jsp"%>
 
 <article>
     <form method="post" action="write-off" autocomplete="off" >
@@ -29,6 +29,7 @@
             </tr>
             <%
                 HttpSession session1 = request.getSession();
+                @SuppressWarnings("unchecked")
                 List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session1.getAttribute("basket");
                 for (FurnitureDataSet fds : furniture){
                     out.print("<tr><td>" + fds.getName() + "</td><td><input type = 'number' name ='" + fds.getId() + "'min = '0'></td><td><input type = 'text'></td></tr>");

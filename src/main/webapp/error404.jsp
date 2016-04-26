@@ -12,9 +12,10 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%> <%--шапка--%>
+<%@ include file="top.jsp"%> <%--шапка--%>
 <article>
-<p>Запрашиваемая вами страница не найдена</p>
+    <h1>404</h1>
+    <p>Запрашиваемая вами страница не найдена</p>
 </article>
 </body>
 </html>

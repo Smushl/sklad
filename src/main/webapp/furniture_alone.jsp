@@ -1,7 +1,7 @@
+<%@ page import="model.FurnitureDataSet" %>
 <%@ page import="model.FurnitureGroupDataSet" %>
 <%@ page import="model.Model" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="model.FurnitureDataSet" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: roman
@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%>
+<%@ include file="top.jsp"%>
 <%int furId = (request.getParameter("f") == null) ? 0 : Integer.parseInt(request.getParameter("f"));%>
 
 <aside>

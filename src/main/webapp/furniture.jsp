@@ -1,4 +1,4 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" %>
+<%@page language="java" contentType="text/html;charset=UTF-8" %>
 <%@ page import="model.FurnitureDataSet" %>
 <%@ page import="model.FurnitureGroupDataSet" %>
 <%@ page import="model.Model" %>
@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<%@ include file="top.html"%> <%--шапка--%>
+<%@ include file="top.jsp"%> <%--шапка--%>
 
 <%int group = (request.getParameter("group") == null) ? 0 : Integer.parseInt(request.getParameter("group"));%>
 <%String name_part = (request.getParameter("name_part") == null) ? "" : request.getParameter("name_part");%>
@@ -43,6 +43,7 @@
     <b>Корзина</b><br>
         <%
             HttpSession session1 = request.getSession();
+            @SuppressWarnings("unchecked")
             List<FurnitureDataSet> furniture = (ArrayList<FurnitureDataSet>) session1.getAttribute("basket");
             if (furniture != null)
                 for (FurnitureDataSet fds : furniture){
