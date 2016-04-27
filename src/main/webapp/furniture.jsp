@@ -69,7 +69,7 @@
             if (!(furnitureList.isEmpty() || furnitureList == null)){
                 for (FurnitureDataSet fds : furnitureList){
                     if ((group == 0) || (fds.getGroup() == group)) {
-                        out.print("<tr><td><a href = 'furniture_alone.jsp?f="+ fds.getId() + "'>" + fds.getName() + "</a></td> <td>"
+                        out.print("<tr><td><a href = 'furniture_alone?f="+ fds.getId() + "'>" + fds.getName() + "</a></td> <td>"
                                 + fds.getInventory() + "</td><td><input type='checkbox' name = " + fds.getId() + "></td></tr>\n");
                     }
                 }
@@ -78,7 +78,7 @@
             if (!(furnitureList.isEmpty() || furnitureList == null)){
                 for (FurnitureDataSet fds : furnitureList){
                     if (fds.getName().toLowerCase().contains(name_part.toLowerCase())){
-                        out.print("<tr><td><a href = 'furniture_alone.jsp?f="+ fds.getId() + "'>" + fds.getName() + "</a></td> <td>"
+                        out.print("<tr><td><a href = 'furniture_alone?f="+ fds.getId() + "'>" + fds.getName() + "</a></td> <td>"
                                 + fds.getInventory() + "</td><td><input type='checkbox' name = " + fds.getId() + "></td></tr>\n");
                     }
                 }

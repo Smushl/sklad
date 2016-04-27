@@ -3,7 +3,7 @@ package model;
 /**
  * Created by roman on 27.02.16.
  */
-public class FurnitureDataSet {
+public class FurnitureDataSet implements java.io.Serializable{
     private int id;
     private String name;
     private int inventory;
@@ -14,6 +14,9 @@ public class FurnitureDataSet {
         this.name = name;
         this.inventory = inventory;
         this.group = group;
+    }
+
+    public FurnitureDataSet() {
     }
 
     public int getId() {

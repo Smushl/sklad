@@ -1,8 +1,8 @@
-<%@ page import="model.FurnitureDataSet" %>
 <%@ page import="model.FurnitureGroupDataSet" %>
 <%@ page import="model.Model" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: roman
   Date: 26.03.16
@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<jsp:useBean id="fds" class="model.FurnitureDataSet" scope="request"/>
 <%@ include file="top.jsp"%>
 <%int furId = (request.getParameter("f") == null) ? 0 : Integer.parseInt(request.getParameter("f"));%>
 
@@ -46,8 +47,11 @@
             <th><b>Кол-во на складе</b></th>
             <th></th>
         </tr>
+        <tr>
+            <td><jsp:getProperty name="fds" property="name"/></td>
+            <td><jsp:getProperty name="fds" property="inventory"/></td>
         <%--<tbody>--%>
-        <%
+<%--        <%
             ArrayList<FurnitureDataSet> furnitureList = model.getFurnitureList();
             if (furId != 0){
                 if (!(furnitureList.isEmpty() || furnitureList == null)) {
@@ -58,14 +62,14 @@
                     }
                 }
             }
-        %>
+        %>--%>
 
         <td>
-        <form method="post" action="fur_change" autocomplete="off" >
-            <input type="hidden" name="id_to_remove" value="<%=furId%>">
-            <button class="btn_del" type="submit">х</button>
-        </form>
-        </td>
+                <form method="post" action="fur_change" autocomplete="off" >
+                    <input type="hidden" name="id_to_remove" value="<%=furId%>">
+                    <button class="btn_del" type="submit">х</button>
+                </form>
+            </td>
         </tr>
     </table>
 

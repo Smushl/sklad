@@ -67,3 +67,6 @@
 24 april 2016
 пока не получается скрыть writeoff.jsp, хоть пихая его в WEB-INF, хоть META-INF, читаем книжечку дальше)
 @SuppressWarnings("unchecked")
+
+27 april 2016
+FurnitureDataSet сделал Bean-ом, в furniture_alone.jsp теперь <jsp:useBean...>. Новый сервлет, FurnitureAlone
